@@ -86,6 +86,13 @@ public:
   {
   }
 
+/// Construct, passing the specified argument to initialise the next layer.
+  template <typename ArgA, typename ArgB>
+  buffered_read_stream(ArgA& a, ArgB& b, std::size_t buffer_size)
+      : next_layer_(a, b), storage_(buffer_size)
+  {
+  }
+
   /// Get a reference to the next layer.
   next_layer_type& next_layer()
   {
